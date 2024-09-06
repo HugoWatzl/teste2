@@ -182,7 +182,7 @@ int main() {
             break;
 
         } else {
-            std::cout << "Opção inválida. Tente novamente." << std::endl;
+            std::cout << "Opção inválida.Escolha numeros de 1-7!" << std::endl;
         }
     }
 
