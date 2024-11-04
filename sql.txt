@@ -10,16 +10,65 @@ CREATE TABLE departamento (
     nomeDEP VARCHAR(30)  
 );
 
-CREATE TABLE curso (
+CREATE TABLE curso(
     codCurso INT PRIMARY KEY,
     nomeCURSO VARCHAR(30),
     ch INT,  -- Carga horária
-    preco REAL
+    preco REAL,
+  cargaHoraria int,
+  codDepto int,
+FOREIGN KEY (codDepto) REFERENCES departamento(codDepto)
 );
 
-CREATE TABLE matricula (
+CREATE TABLE matricula(
+matricula int,
+codCurso int,
+dtMatricula date,
+PRIMARY KEY (matricula,codCurso),
+FOREIGN KEY (matricula) REFERENCES aluno(matricula),
+FOREIGN KEY (codCurso) REFERENCES curso(codCurso)
+);CREATE TABLE matricula(
     idMat INT PRIMARY KEY,
     matricula_aluno INT,  -- Coluna para referenciar a matrícula do aluno
     data DATE,
     FOREIGN KEY (matricula_aluno) REFERENCES Aluno(matricula)  
 );
+
+CREATE TABLE func(
+  codFUNC int PRIMARY KEY,
+  nomeFUNC varchar(20),
+  city varchar(20),
+  CBO int,
+  uf char(2),
+);
+
+--exercicio de alter aula 1 (ex 6)ALTER
+
+ALTER TABLE func rename collumn city to cidade;
+
+-- 7
+
+alter table func ADD COLLUMN sexo char(1);
+
+--8
+alter TABLE func alter COLLUMN nomeFUNC varchar(30);
+
+--9
+
+alter TABLE func drop COLLUMN CBO;
+
+--10
+
+alter TABLE func cidade set default 'RJ';
+
+--11
+
+alter TABLE func to rename funcionario;
+
+--12
+
+ALTER TABLE funcionario MODIFY COLLUMN nomeFUNC set varchar(30) not null;
+
+--13
+
+ALTE TABLE funcionario MODIFY COLLUMN set codFUNC int auto_increment;
